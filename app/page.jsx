@@ -8,7 +8,7 @@ export default function Home() {
   const [fontSize, setFontSize] = useState(20);
 
   useEffect(() => {
-    const storeFont = localStorage.getItem("FONT")
+    const storeFont = localStorage.getItem("FONT");
     const store = localStorage.getItem("TEXT");
     if (store) {
       setState(store);
@@ -18,13 +18,19 @@ export default function Home() {
     }
   }, []);
 
-  useEffect(()=>{
-    localStorage.setItem("TEXT", text)
-  },[text])
+  useEffect(() => {
+    localStorage.setItem("TEXT", text);
+  }, [text]);
 
-  useEffect(()=>{
-    localStorage.setItem("FONT", fontSize)
-  },[fontSize])
+  useEffect(() => {
+    localStorage.setItem("FONT", fontSize);
+  }, [fontSize]);
+
+
+  const togleSpellCheck = () =>{
+
+    alert("Coming Soon!")
+  }
 
   return (
     <main className="flex text-[20px] min-h-screen flex-col  items-center justify-center">
@@ -38,7 +44,9 @@ export default function Home() {
           </div>
 
           <div className="flex flex-row items-center justify-center">
-            <p className="text-[10px] uppercase mx-2 text-slate-500 ">font-size</p>
+            <p className="text-[10px] uppercase mx-2 text-slate-500 ">
+              font-size
+            </p>
             <input
               className="text-white w-[50px] pl-2 text-[16px] flex justify-center items-center rounded-sm bg-white/10 "
               type="number"
@@ -53,13 +61,15 @@ export default function Home() {
             <div
               onClick={() => {
                 localStorage.setItem("TEXT", "");
-                setState("")
+                setState("");
               }}
               className="text-[12px] rounded-md  text-slate-500  hover:bg-slate-800/80 mx-2 py-1 cursor-pointer px-2 uppercase "
             >
               clear
             </div>
-            <div className=" text-[12px] rounded-md  text-slate-500 hover:bg-slate-800/80 py-1 cursor-pointer px-2 uppercase ">
+            <div onClick={()=>{
+              togleSpellCheck()
+            }} className=" text-[12px] rounded-md  text-slate-500 hover:bg-slate-800/80 py-1 cursor-pointer px-2 uppercase ">
               spell-check
             </div>
           </div>
